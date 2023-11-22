@@ -1,18 +1,15 @@
-import mysql from 'mysql2/promise';
+const mysql = require("mysql2/promise");
 
-const db = {
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'session2'
-}
+const pool = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "session2",
+  connectionLimit: 5,
+});
 
-export async function conectar() {
-    try {
-        const conexion = await mysql.createPool(db);
-        console.log("Database on ");
-    }
-    catch (error) {
-        console.log(`Error connection database ${error}`);
-    }
+
+
+module.exports = {
+  pool,
 };
