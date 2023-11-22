@@ -22,3 +22,17 @@ app.listen(3000, () => {
 app.get('/', (req,res)=>{
     res.render('index');
 })
+
+app.post('/login', (req, res)=>{
+    const user = req.body.usuario;
+    const employee = req.body.empleado;
+    const password = req.body.contraseña;
+
+    if(employee){
+        console.log(employee)
+        res.render('index')
+    }else if(user){
+        console.log(user)
+        res.render('index')
+    }
+})

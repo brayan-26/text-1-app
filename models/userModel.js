@@ -1,36 +1,28 @@
 const { pool } = require("../config/db.js");
 
-let conexion; 
+async function loginUser(user, employee, password) {
+  try {
+    let conexion;
 
-// async function register(user, password) {
-//   let conexion;
-//   try {
-//     conexion = pool.getConnection();
-//     const query = "INSERT INTO user SET usuario = ? AND password = ?";
-//     const value = [user, password];
+    conexion = pool.getConnection();
+    if (user || employee) {
+      console.log("melo");
 
-//     (await conexion).execute(query, value);
-//   } catch (error) {
-//     console.log(`Error connection database ${error}`);
-//   } finally {
-//     if (conexion) {
-//       (await conexion).release();
-//     }
-//   }
-// }
-
-async function login() {
-    try{
-        conexion = pool.getConnection();
-        const query = ""
-
-    }catch(error){
-
-    }finally{
-
+      if (password) {
+        console.log("password melo");
+      } else {
+        console.log("ingrese una contraseña");
+      }
+    } else {
+      console.log("ingrese un usuario o empleado");
     }
+  } catch (error) {
+    console.log(error);
+  } finally {
+    if (conexion) {
+      console.log(conexion);
+    }
+  }
 }
 
-module.exports = {
-  register,
-};
+module.exports = {};
