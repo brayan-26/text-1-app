@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser')
-const { loginUser , loginEmployee} = require('./models/userModel')
+const { loginUser, loginEmployee } = require('./models/userModel')
 const app = express();
 
 app.disable("x-powered-by");
@@ -29,16 +29,26 @@ app.post('/login', async (req, res) => {
     const user = req.body.usuario;
     const password = req.body.contraseña;
     if (employee || user) {
-        if (employee) {
-            try{
-                const resultado = await loginEmployee(employee, user, password);
-                console.log(resultado);
 
-            }catch(error){
+        if (employee) {
+            try {
+                const resultado = await loginEmployee(employee, user, password);
+
+                if(resultado === null){
+                    res.render('index')
+                }
+                else if(resultado === true){
+                    res.render('inicio')
+                }
+                console.log(resultado)
+
+            } catch (error) {
                 console.log(error)
                 res.render('error')
             }
 
+
+            // iniciamos session solo con el usuario y la contraseña
         } else if (!employee) {
 
             if (user && password) {
@@ -46,16 +56,7 @@ app.post('/login', async (req, res) => {
                 try {
                     const resultado = await loginUser(user, password)
                     console.log(resultado)
-
-                    if (resultado === 1) {
-                        res.render('index')
-                        console.log("Estas tratando de ingresar como usuario, pero no lo es")
-                    } else if (resultado === null) {
-                        res.render('index')
-                    } else {
-                        res.render('inicio')
-                    }
-
+                    
                 } catch (error) {
                     console.log(error)
                     res.render('error')
@@ -64,7 +65,7 @@ app.post('/login', async (req, res) => {
                 console.log("ingrese un usuario y una contraseña")
             }
         }
-    }else{
+    } else {
         console.log("Ingrese un emepleado o un usuario")
     }
 });

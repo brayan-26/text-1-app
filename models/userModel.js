@@ -4,33 +4,38 @@ const { pool } = require('../config/db')
 async function loginEmployee(employee, user, password) {
     const conexion = await pool.getConnection();
     try {
-        const sql = 'SELECT UserTypeID FROM users WHERE FullName = ? AND Password = ?'
-        // validamos el fulllname con la contraseña
-        const value = [employee , password]
+        // solicitud del tipo de usuario
+        const sql = 'SELECT UserTypeID FROM users WHERE FullName = ? AND Password = ?';
+        const value = [employee, password];
         const [results] = await conexion.query(sql, value);
 
-        // valiamos que el usuario exista 
-        const sql2 = 'SELECT * FROM users WHERE Username = ?'
-        const value2 = [user]
-        const [results2] = await conexion.query(sql2,value2 )
-        
+        if (results.length > 0) {
+            const UserTypeID = results[0].UserTypeID;
 
-        const UserTypeID = results[0].UserTypeID
+            if (UserTypeID === 1) {
 
-        console.log(UserTypeID)
-        if (UserTypeID === 1) {
-            if(results.length > 0){
-                console.log("el nombre completo y la contraseña esta melos")
-                
-            }else{
-                console.log("nombre o contraseña incorrecta")
+                const SQLUser = 'SELECT * FROM users WHERE Username = ?'
+                const valueUser = [user]
+                const [resultsUser] = await conexion.query(SQLUser, valueUser)
+                if (resultsUser.length > 0) {
+                    console.log("puede iniciar session")
+                    return true;
+
+                } else {
+                    console.log("usuario no encontrado")
+                    return null
+                }
+
+            } else if (UserTypeID === 2) {
+                console.log("Estas tratando de aceder como empleado pero no lo es   ");
+                return null
             }
-        }else if(UserTypeID === 2){
-            console.log("estas tratando de ingresar como un emepleado y NO LO ES")
-        }else {
-            console.log("Error, el usuario NO encontrado");
-            return null;
+        } else {
+            const mensaje = ("empleado o contraseña incorrectas")
+            console.log(mensaje)
+            return mensaje, null
         }
+
     } catch (error) {
         // mostramos posibles errores
         console.log(error);
@@ -52,7 +57,7 @@ async function loginUser(user, password) {
         if (results.length > 0) {
             const UserTypeID = results[0].UserTypeID
             console.log("usuario encontrado");
-            return UserTypeID;
+            // console.log
         } else {
             console.log("Error, el usuario NO encontrado");
             return null;
@@ -67,6 +72,6 @@ async function loginUser(user, password) {
 }
 
 module.exports = {
-    loginUser, 
+    loginUser,
     loginEmployee
 };
