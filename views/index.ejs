@@ -15,8 +15,27 @@
       <input type="text" name="usuario" />
 
       <label>Password</label>
-      <input type="text" name="contraseña" />
+      <input type="password" name="contraseña" id="contraseña" />
+      <input type="checkbox" id="chePassword" />
+      <label for="chePassword">Mostrar contraseña</label>
       <button type="submit">Login</button>
     </form>
+
+    <% if(mensaje){ %>
+    <p><%= mensaje %></p>
+    <% } %>
+
+    <script>
+      const contraseña = document.getElementById("contraseña");
+      const mostrarPassword = document.getElementById("chePassword");
+
+      mostrarPassword.addEventListener("change", () => {
+        if (mostrarPassword.checked) {
+          contraseña.type = "text";
+        } else  {
+          contraseña.type = "password";
+        }
+      });
+    </script>
   </body>
 </html>

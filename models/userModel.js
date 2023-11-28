@@ -17,23 +17,18 @@ async function loginEmployee(employee, user, password) {
                 const SQLUser = 'SELECT * FROM users WHERE Username = ?'
                 const valueUser = [user]
                 const [resultsUser] = await conexion.query(SQLUser, valueUser)
-                if (resultsUser.length > 0) {
-                    console.log("puede iniciar session")
-                    return true;
 
+                if (resultsUser.length > 0) {
+                    return  {succes: true, message: `Bienvenido ${user}`}
                 } else {
-                    console.log("usuario no encontrado")
-                    return null
+                    return {succes: null , message: "usuario NO encontrado"}
                 }
 
             } else if (UserTypeID === 2) {
-                console.log("Estas tratando de aceder como empleado pero no lo es   ");
-                return null
+                return {succes: null , message: "Estas tratando de aceder como empleado pero no lo es"}
             }
         } else {
-            const mensaje = ("empleado o contraseña incorrectas")
-            console.log(mensaje)
-            return mensaje, null
+            return {succes: null , message: "empleado o contraseña incorrectas"}
         }
 
     } catch (error) {
@@ -55,13 +50,19 @@ async function loginUser(user, password) {
         const [results] = await conexion.query(sql, value);
 
         if (results.length > 0) {
-            const UserTypeID = results[0].UserTypeID
-            console.log("usuario encontrado");
-            // console.log
+            const UserTypeID = results[0].UserTypeID;
+
+            if (UserTypeID === 2) {
+                return  {succes: true, message: `Bienvenido ${user}`}
+
+            } else if (UserTypeID === 1) {
+                return {succes: null , message: "Estas tratando de aceder como usuario pero NO lo es."}
+            }
         } else {
-            console.log("Error, el usuario NO encontrado");
-            return null;
+            return {succes: null , message: "usuario o contraseña incorrectas."}
         }
+
+
     } catch (error) {
         // mostramos posibles errores
         console.log(error);
