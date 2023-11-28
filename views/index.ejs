@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>melo</h1>
-    <form action="/login" method="post">
+    <form action="/login-user" method="post">
       <label>Employe</label>
       <input type="text" name="empleado" />
 
@@ -25,17 +25,8 @@
     <p><%= mensaje %></p>
     <% } %>
 
-    <script>
-      const contraseña = document.getElementById("contraseña");
-      const mostrarPassword = document.getElementById("chePassword");
+    <button><a href="register">registrese</a></button>
 
-      mostrarPassword.addEventListener("change", () => {
-        if (mostrarPassword.checked) {
-          contraseña.type = "text";
-        } else  {
-          contraseña.type = "password";
-        }
-      });
-    </script>
+    <script src="/js/main.js"></script>
   </body>
 </html>

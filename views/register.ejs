@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>register</h1>
+    <form action="/register-user" method="post">
+      <input type="text" name="nombre" placeholder="username" />
+
+      <input type="text" name="nombreCompleto" placeholder="full name" />
+
+      <input type="date" name="cumpleaños" placeholder="cumpleaños" />
+
+      <input type="password" name="contraseña" placeholder="contraseña" />
+
+      <input
+        type="password"
+        name="contraseñaRepi"
+        placeholder="Repita la contraseña"
+      />
+
+      <input type="radio" name="genero" value="0" />
+      <input type="radio" name="genero" value="1" />
+
+      <input type="number" name="miembroFami" placeholder="numero de familia" />
+      <button type="submit">register</button>
+
+      <button><a href="/">login</a></button>
+    </form>
+
+    <% if(mensaje){ %>
+        <p><%= mensaje %></p>
+    <% } %>
+  </body>
+</html>
