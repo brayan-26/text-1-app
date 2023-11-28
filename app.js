@@ -99,16 +99,16 @@ app.post("/register-user", async (req, res) => {
         try {
           const resultado = await registerUser(
             name,
-            fullName,
             password,
-            birthday,
+            fullName,
             gender,
+            birthday,
             numberGender
           );
           const mensaje = resultado.message;
 
           if (resultado.succes === true) {
-            res.render("inicio");
+            res.render("inicio", {mensaje});
           } else if (resultado.succes === null) {
             res.render("register", { mensaje });
           }
