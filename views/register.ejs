@@ -26,7 +26,7 @@
       <input type="radio" name="genero" value="1" />
 
       <input type="number" name="miembroFami" placeholder="numero de familia" />
-      <button type="submit">register</button>
+      <button type="submit" id="buttonRegister" disabled>register</button>
 
       <button><a href="/">login</a></button>
     </form>
@@ -34,5 +34,18 @@
     <% if(mensaje){ %>
     <p><%= mensaje %></p>
     <% } %>
+
+    <input type="checkbox" id="aceptarTerminos" disabled/>
+    <button onclick="abrir()" id="verTerminos">mirar los terminos</button>
+    <div id="terminos" style="display: none">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quasi
+        libero in quisquam deserunt provident necessitatibus aliquam, saepe ut
+        iste, quos expedita explicabo laboriosam autem! Animi officia quaerat
+        mollitia ea.
+      </p>
+      <button onclick="cerrar()">aceptar</button>
+    </div>
   </body>
+  <script src="/js/register.js"></script>
 </html>
