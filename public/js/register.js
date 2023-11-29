@@ -13,6 +13,9 @@ function cerrar() {
   containerTerminos.style.display = 'none';
 }
 
+botonRegistrar.disabled = true;
+aceptarTerminos.disabled = true;
+
 verTerminosCondiciones.addEventListener('click', ()=>{
     aceptarTerminos.disabled = false; 
 });

@@ -3,29 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/style.css" />
     <title>Document</title>
   </head>
   <body>
-    <h1>melo</h1>
-    <form action="/login-user" method="post">
-      <label>Employe</label>
-      <input type="text" name="empleado" />
+    <div class="container-logo">
+      <img src="/img/logo-pagina.webp" alt="" />
+    </div>
+    <div class="container-body">
+      <div class="container-form-login">
+        <!--  -->
+        <form action="/login-user" method="post">
+          <div class="container-form">
+            <div class="container-form-index">
+              <!--  -->
+              <div class="container-input-validacion">
+                <!--  -->
+                <div class="container-label-login">
+                  <label>Employee:</label> <br />
+                  <label>User:</label> <br />
+                  <label>Password:</label>
+                </div>
+                <div class="container-input-login">
+                  <input type="text" name="empleado" /> <br />
+                  <input type="text" name="usuario" /> <br />
+                  <input type="password" name="contraseña" id="contraseña" />
+                  <!--  -->
+                </div>
+              </div>
 
-      <label>User</label>
-      <input type="text" name="usuario" />
+              <div class="container-check-login">
+                <input type="checkbox" />
+                <label for="chePassword">Kepp me signed in</label> <br />
+                <input type="checkbox" id="chePassword" />
+                <label for="chePassword">Show password</label>
+              </div>
+            </div>
 
-      <label>Password</label>
-      <input type="password" name="contraseña" id="contraseña" />
-      <input type="checkbox" id="chePassword" />
-      <label for="chePassword">Mostrar contraseña</label>
-      <button type="submit">Login</button>
-    </form>
-
-    <% if(mensaje){ %>
-    <p><%= mensaje %></p>
-    <% } %>
-
-    <button><a href="register">registrese</a></button>
+            <% if(mensaje){ %>
+            <p><%= mensaje %></p>
+            <% } %>
+          </div>
+          <div class="container-botones-index">
+            <button type="submit">Login</button>
+            <button><a href="register">registrese</a></button>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <script src="/js/index.js"></script>
   </body>

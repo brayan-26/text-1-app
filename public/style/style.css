@@ -1,0 +1,91 @@
+.container-logo {
+  display: block;
+  text-align: center;
+}
+.container-logo img {
+  width: 250px;
+  height: 250px;
+}
+
+.container-body {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.container-body .container-form-login .container-form {
+  border: 5px solid black;
+}
+.container-body .container-form-login .container-form p {
+  margin: 0px 0px 13px 0px;
+  font-size: 25px;
+}
+.container-body .container-form-login .container-form .container-form-index {
+  height: 180px;
+  width: 750px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.container-body .container-form-login .container-form .container-input-validacion {
+  display: flex;
+}
+.container-body .container-form-login .container-form .container-input-validacion .container-label-login {
+  margin: 0px 20px 0px 0px;
+  display: flex;
+  flex-direction: column;
+}
+.container-body .container-form-login .container-form .container-input-validacion .container-label-login label {
+  font-size: 25px;
+}
+.container-body .container-form-login .container-form .container-input-validacion .container-input-login {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.container-body .container-form-login .container-form .container-input-validacion .container-input-login input {
+  height: 20px;
+  font-size: 18px;
+  margin-top: px;
+}
+.container-body .container-form-login .container-check-login {
+  text-align: start;
+  margin: 0px 0px 0px 40px;
+  height: 120px;
+}
+.container-body .container-form-login .container-check-login input {
+  margin-top: 30px;
+}
+.container-body .container-form-login .container-check-login label {
+  font-size: 22px;
+}
+.container-body .container-form-login .container-botones-index {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 55px;
+  gap: 20px;
+}
+.container-body .container-form-login .container-botones-index button {
+  width: 100px;
+  height: 35px;
+  font-size: 18px;
+  box-shadow: 4px 4px 1px black;
+}
+.container-body .container-form-login .container-botones-index button a {
+  color: black;
+  text-decoration: none;
+}
+.container-body .container-form-login .container-botones-index button:hover {
+  scale: 1.1;
+  transition: 0.1s;
+  cursor: pointer;
+}
+.container-body .container-form-login .container-botones-index button:not(:hover) {
+  scale: 1;
+  transition: 0.1s;
+}
+
+/*# sourceMappingURL=style.css.map */
