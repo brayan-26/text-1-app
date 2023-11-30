@@ -45,6 +45,7 @@
   flex-direction: column;
 }
 .container-body .container-form-login .container-form .container-input-validacion .container-input-login input {
+  padding: 1px 1px 1px 5px;
   height: 20px;
   font-size: 18px;
   margin-top: px;
@@ -69,13 +70,16 @@
   gap: 20px;
 }
 .container-body .container-form-login .container-botones-index button {
+  border-radius: 5px;
   width: 100px;
   height: 35px;
   font-size: 18px;
-  box-shadow: 4px 4px 1px black;
+  box-shadow: 3px 3px 2px black;
+  text-align: center;
 }
 .container-body .container-form-login .container-botones-index button a {
   color: black;
+  padding: 6.5px 15px 6.5px 8px;
   text-decoration: none;
 }
 .container-body .container-form-login .container-botones-index button:hover {
