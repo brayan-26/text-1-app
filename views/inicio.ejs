@@ -3,19 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/style.css" />
     <title>Document</title>
   </head>
-  <body>
-    <div class="container-logo">
-      <img src="/img/logo-pagina.webp" alt="" />
-    </div>
+  <body class="body-inicio">
+    <div class="container-inicio-body">
+      <div class="container-logo-inicio">
+        <img src="/img/logo-pagina.webp" alt="logo de la empresa" />
+      </div>
 
-    <div class="container">
+      <div class="container-botones-inicio">
+        <button onclick="abrirTravel()">I'm Traveler</button>
+        <button onclick="abrirOwner()">I'm Owner / Manager </button>
+        <button>Log out </button>
+      </div>
+      <div class="container-traveler" id="traveler"></div>
 
+      <div class="container-manager" id="manager"></div>
     </div>
-    <% if(mensaje){ %>
-        <p><%= mensaje %></p>
-    <% } %>
   </body>
 </html>

@@ -19,6 +19,7 @@ app.listen(3000, () => {
   console.log("Server on 3000");
 });
 
+// login
 app.get("/", (req, res) => {
   const mensaje = "";
   res.render("index", { mensaje });
@@ -38,7 +39,7 @@ app.post("/login-user", async (req, res) => {
           mensaje = resultado.message;
 
           if (resultado.succes === true) {
-            res.render("inicio", { mensaje });
+            res.render("inicio");
           } else if (resultado.succes === null) {
             res.render("index", { mensaje });
           }
@@ -47,7 +48,7 @@ app.post("/login-user", async (req, res) => {
           res.render("error");
         }
       } else {
-        res.render("index", { mensaje: "ingrese un usuario y una contraseña" });
+        res.render("index", { mensaje: "Ingrese un usuario y una contraseña" });
       }
     } else if (employee && password) {
       try {
@@ -55,7 +56,7 @@ app.post("/login-user", async (req, res) => {
 
         const mensaje = resultado.message;
         if (resultado.succes === true) {
-          res.render("inicio", { mensaje });
+          res.render("inicio");
         } else if (resultado.succes === null) {
           res.render("index", { mensaje });
         }
@@ -64,13 +65,14 @@ app.post("/login-user", async (req, res) => {
         res.render("error");
       }
     } else {
-      res.render("index", { mensaje: "ingrese un empleado y una contraseña" });
+      res.render("index", { mensaje: "Ingrese un empleado y una contraseña" });
     }
   } else {
     res.render("index", { mensaje: "Ingrese un emepleado o un usuario" });
   }
 });
 
+// register
 app.get("/register", (req, res) => {
   const mensaje = "";
   res.render("register", { mensaje });
@@ -108,7 +110,7 @@ app.post("/register-user", async (req, res) => {
           const mensaje = resultado.message;
 
           if (resultado.succes === true) {
-            res.render("inicio", {mensaje});
+            res.render("inicio");
           } else if (resultado.succes === null) {
             res.render("register", { mensaje });
           }
@@ -118,12 +120,12 @@ app.post("/register-user", async (req, res) => {
         }
       } else {
         res.render("register", {
-          mensaje: "la contraseña debe de tener como minimo 5 digitos",
+          mensaje: "La contraseña debe de tener como minimo 5 digitos",
         });
       }
     } else {
       res.render("register", {
-        mensaje: `las contraseñas NO coinciden ${password} ${passwordRepi} `,
+        mensaje: `Las contraseñas NO coinciden ${password} ${passwordRepi} `,
       });
     }
   } else {
@@ -131,6 +133,8 @@ app.post("/register-user", async (req, res) => {
   }
 });
 
+// error 404
 app.use((req, res) => {
   res.render("error");
 });
+

@@ -19,16 +19,17 @@ async function loginEmployee(employee, user, password) {
                 const [resultsUser] = await conexion.query(SQLUser, valueUser)
 
                 if (resultsUser.length > 0) {
-                    return  {succes: true, message: `Bienvenido ${user}`}
+                    console.log("El usuario puede iniciar sesion")
+                    return  {succes: true}
                 } else {
-                    return {succes: null , message: "usuario NO encontrado"}
+                    return {succes: null , message: "Usuario NO encontrado"}
                 }
 
             } else if (UserTypeID === 2) {
-                return {succes: null , message: "Estas tratando de aceder como empleado pero no lo es"}
+                return {succes: null , message: `Estas tratando de aceder como empleado pero ${employee} NO lo es`}
             }
         } else {
-            return {succes: null , message: "empleado o contraseña incorrectas"}
+            return {succes: null , message: "Empleado o contraseña incorrectas"}
         }
 
     } catch (error) {
@@ -53,10 +54,11 @@ async function loginUser(user, password) {
             const UserTypeID = results[0].UserTypeID;
 
             if (UserTypeID === 2) {
-                return  {succes: true, message: `Bienvenido ${user}`}
+                console.log("El usuario puede iniciar sesion")
+                return  {succes: true}
 
             } else if (UserTypeID === 1) {
-                return {succes: null , message: "Estas tratando de aceder como usuario pero NO lo es."}
+                return {succes: null , message: `Estas tratando de aceder como usuario pero ${user} NO lo es.`}
             }
         } else {
             return {succes: null , message: "usuario o contraseña incorrectas."}

@@ -315,4 +315,27 @@
   transition: 0.2s;
 }
 
+.body-inicio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.body-inicio .container-logo-inicio img {
+  width: 200px;
+  height: 200px;
+}
+.body-inicio .container-traveler {
+  display: block;
+  background-color: red;
+  width: 1000px;
+  height: 400px;
+}
+.body-inicio .container-manager {
+  background-color: yellow;
+  display: none;
+  width: 1000px;
+  height: 400px;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -32,14 +32,15 @@ async function registerUser(
         birthday,
         numberGender,
       ];
-      
+
       const results = await conexion.query(sql, value);
       console.log(results)
       if (results.length > 0) {
         console.log("usuario registrado");
-        return  {succes: true, message: `Bienvenido ${name}`}
+        console.log("El usuario puede iniciar sesion")
+        return { succes: true }
       } else {
-        return { succes: null, message: "no se pudo registrar el uusario" };
+        return { succes: null, message: "No se pudo registrar el uusario" };
       }
     }
   } catch (error) {
