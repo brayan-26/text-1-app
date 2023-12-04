@@ -12,4 +12,3 @@ function abrirOwner() {
     ventanaTravel.style.display = "none";
 }
 
-console.log("melo")

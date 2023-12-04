@@ -133,6 +133,9 @@ app.post("/register-user", async (req, res) => {
   }
 });
 
+app.post('/inicio', (req, res)=>{
+
+})
 // error 404
 app.use((req, res) => {
   res.render("error");
