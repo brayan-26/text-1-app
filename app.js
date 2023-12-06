@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { loginUser, loginEmployee } = require("./models/loginUser");
 const { registerUser } = require("./models/registerUser");
+const { consultTravel } = require("./models/main");
+const e = require("express");
 const app = express();
 
 app.disable("x-powered-by");
@@ -30,6 +32,7 @@ app.post("/login-user", async (req, res) => {
   const employee = req.body.empleado;
   const user = req.body.usuario;
   const password = req.body.contraseña;
+  const consulta  = await consultTravel()
 
   if (employee || user) {
     if (!employee) {
@@ -39,6 +42,17 @@ app.post("/login-user", async (req, res) => {
           mensaje = resultado.message;
 
           if (resultado.succes === true) {
+
+            const list = []
+            consulta.forEach((e) => list.push(e.Title));
+            console.log(list)
+            list.forEach(e => {
+              console.log(e)
+            });
+
+
+
+
             res.render("inicio");
           } else if (resultado.succes === null) {
             res.render("index", { mensaje });
@@ -110,7 +124,7 @@ app.post("/register-user", async (req, res) => {
           const mensaje = resultado.message;
 
           if (resultado.succes === true) {
-            res.render("inicio");
+            res.render("index", {mensaje});
           } else if (resultado.succes === null) {
             res.render("register", { mensaje });
           }
@@ -140,4 +154,3 @@ app.post('/inicio', (req, res)=>{
 app.use((req, res) => {
   res.render("error");
 });
-

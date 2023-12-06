@@ -7,7 +7,7 @@ async function consultTravel() {
         const sql = 'SELECT Title, Capacity, AreaID, ItemTypeID FROM items'
         const [results] = await conexion.query(sql);
 
-        console.log(results)
+        return results
 
     } catch (error) {
         console.log(error)
