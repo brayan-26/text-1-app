@@ -1,0 +1,20 @@
+// capacidad.forEach(c => {
+//   console.log(c)
+// });
+
+// area.forEach(a => {
+//   console.log(a)
+// });
+
+// itemType.forEach(i => {
+//   console.log(i)
+// });
+
+
+<% if(titulo){ %>
+<td><%= titulo %></td>
+<% } %>
+            
+// consulta.forEach((a)=> area.push(a.AreaID))
+// consulta.forEach((i)=> itemType.push(i.ItemTypeID))
+// consulta.forEach((c)=> capacidad.push(c.Capacity))

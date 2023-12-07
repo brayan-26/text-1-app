@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const { loginUser, loginEmployee } = require("./models/loginUser");
 const { registerUser } = require("./models/registerUser");
 const { consultTravel } = require("./models/main");
-const { consultTravel } = require("./models/main");
+const e = require("express");
 const app = express();
 
 app.disable("x-powered-by");
@@ -32,7 +32,13 @@ app.post("/login-user", async (req, res) => {
   const employee = req.body.empleado;
   const user = req.body.usuario;
   const password = req.body.contraseña;
-  const consulta  = await consultTravel()
+
+  // consulta 
+  const consulta = await consultTravel()
+  const title = []
+  const capacidad = []
+  const area = []
+  const itemType = []
 
   if (employee || user) {
     if (!employee) {
@@ -40,25 +46,16 @@ app.post("/login-user", async (req, res) => {
         try {
           const resultado = await loginUser(user, password);
           mensaje = resultado.message;
-          const resultadoMain = await consultTravel();
-          area = resultadoMain.Area;
-          capacidad = resultadoMain.Capacidad;
-          item = resultadoMain.Item;
-          title = resultadoMain.Title;
-          
+
+          // let titulo
           if (resultado.succes === true) {
+            consulta.forEach((e) => title.push(e.Title));
+            for (const element of title) {
+              return element
+            }
+            console.log(element)
+            res.render('inicio');
 
-            const list = []
-            consulta.forEach((e) => list.push(e.Title));
-            console.log(list)
-            list.forEach(e => {
-              console.log(e)
-            });
-
-
-
-
-            res.render("inicio");
           } else if (resultado.succes === null) {
             res.render("index", { mensaje });
           }
@@ -129,7 +126,7 @@ app.post("/register-user", async (req, res) => {
           const mensaje = resultado.message;
 
           if (resultado.succes === true) {
-            res.render("index", {mensaje});
+            res.render("index", { mensaje });
           } else if (resultado.succes === null) {
             res.render("register", { mensaje });
           }

@@ -8,8 +8,6 @@ async function consultTravel() {
         const [results] = await conexion.query(sql);
         return results
 
-        return results
-
     } catch (error) {
         console.log(error)
     } finally {
