@@ -36,9 +36,7 @@ async function registerUser(
       const results = await conexion.query(sql, value);
       console.log(results)
       if (results.length > 0) {
-        console.log("usuario registrado");
-        console.log("El usuario puede iniciar sesion")
-        return { succes: true }
+        return { succes: true , message:"Usuario regustrado con exito, Puede iniciar sesion"}
       } else {
         return { succes: null, message: "No se pudo registrar el uusario" };
       }
