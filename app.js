@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { loginUser, loginEmployee } = require("./models/loginUser");
 const { registerUser } = require("./models/registerUser");
+const { consultTravel } = require("./models/main");
 const app = express();
 
 app.disable("x-powered-by");
@@ -31,14 +32,21 @@ app.post("/login-user", async (req, res) => {
   const user = req.body.usuario;
   const password = req.body.contraseña;
 
+
   if (employee || user) {
     if (!employee) {
       if (user && password) {
         try {
           const resultado = await loginUser(user, password);
           mensaje = resultado.message;
-
+          const resultadoMain = await consultTravel();
+          area = resultadoMain.Area;
+          capacidad = resultadoMain.Capacidad;
+          item = resultadoMain.Item;
+          title = resultadoMain.Title;
+          
           if (resultado.succes === true) {
+            console.log(resultadoMain)
             res.render("inicio");
           } else if (resultado.succes === null) {
             res.render("index", { mensaje });
@@ -110,7 +118,7 @@ app.post("/register-user", async (req, res) => {
           const mensaje = resultado.message;
 
           if (resultado.succes === true) {
-            res.render("inicio");
+            res.render("index");
           } else if (resultado.succes === null) {
             res.render("register", { mensaje });
           }
@@ -133,9 +141,8 @@ app.post("/register-user", async (req, res) => {
   }
 });
 
-app.post('/inicio', (req, res)=>{
 
-})
+
 // error 404
 app.use((req, res) => {
   res.render("error");

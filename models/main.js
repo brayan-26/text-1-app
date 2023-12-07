@@ -1,4 +1,4 @@
-const {pool} = require('../config/db');
+const { pool } = require('../config/db');
 
 
 async function consultTravel() {
@@ -6,16 +6,16 @@ async function consultTravel() {
     try {
         const sql = 'SELECT Title, Capacity, AreaID, ItemTypeID FROM items'
         const [results] = await conexion.query(sql);
+        return results
 
-        console.log(results)
 
     } catch (error) {
         console.log(error)
-    }finally{
+    } finally {
         conexion.release();
     }
 }
 
-module.exports ={
+module.exports = {
     consultTravel
 }
