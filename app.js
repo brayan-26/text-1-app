@@ -27,18 +27,21 @@ app.get("/", (req, res) => {
   res.render("index", { mensaje });
 });
 
+// app.post("/login-user", (req, res) => {
+//   const Titulos = "";
+//   res.render("index", { Titulos });
+// })
+
 app.post("/login-user", async (req, res) => {
   // llamos los datos del html
   const employee = req.body.empleado;
   const user = req.body.usuario;
   const password = req.body.contraseña;
 
+
   // consulta 
-  const consulta = await consultTravel()
-  const title = []
-  const capacidad = []
-  const area = []
-  const itemType = []
+  const datos = await consultTravel()
+  var titulos = datos[0];
 
   if (employee || user) {
     if (!employee) {
@@ -47,18 +50,21 @@ app.post("/login-user", async (req, res) => {
           const resultado = await loginUser(user, password);
           mensaje = resultado.message;
 
-          // let titulo
           if (resultado.succes === true) {
-            consulta.forEach((e) => title.push(e.Title));
-            for (const element of title) {
-              return element
+            var titulosRenderizados = [];
+            for (var i = 0; i < titulos.length; i++) {
+              var titulo = titulos[i].Title;
+              titulosRenderizados.push(titulo);
             }
-            console.log(element)
-            res.render('inicio');
+
+            res.render('inicio', { Titulos: titulosRenderizados });
+
+
 
           } else if (resultado.succes === null) {
             res.render("index", { mensaje });
           }
+          // si tenemos fallos renderizamos 404
         } catch (error) {
           console.log(error);
           res.render("error");
@@ -76,6 +82,7 @@ app.post("/login-user", async (req, res) => {
         } else if (resultado.succes === null) {
           res.render("index", { mensaje });
         }
+        // si tenemos fallos renderizamos 404
       } catch (error) {
         console.log(error);
         res.render("error");

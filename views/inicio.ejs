@@ -19,12 +19,18 @@
       </div>
       <div class="container-traveler" id="traveler">
         <input type="search" />
-        <table>
+
+        <table border="1">
           <tr>
-            titulos
+            <th>Título</th>
           </tr>
-          
+          <% for (var i = 0; i < Titulos.length; i++) { %>
+            <tr>
+              <td><%= Titulos[i] %></td>
+            </tr>
+          <% } %>
         </table>
+        
       </div>
 
       <div class="container-manager" id="manager"></div>

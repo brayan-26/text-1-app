@@ -1,20 +1,51 @@
-// capacidad.forEach(c => {
-//   console.log(c)
-// });
+ // capacidad
+            var capacityRender = [];
+            for (var i = 0; i < Datos.length; i++) {
+              var capacity = Datos[i].Capacity;
+              capacityRender.push(capacity);
+            }
+            // area
+            var areaIDRender = [];
+            for (var i = 0; i < Datos.length; i++) {
+              var areas = Datos[i].AreaID;
+              areaIDRender.push(areas);
+            }
+            // item
+            var itemRender = [];
+            for (var i = 0; i < Datos.length; i++) {
+              var items = Datos[i].ItemTypeID;
+              itemRender.push(items);
+            }
 
-// area.forEach(a => {
-//   console.log(a)
-// });
+res.render('inicio', { Titulos: titulosRender , capacidad: capacityRender, area: areaIDRender , item: itemRender});
 
-// itemType.forEach(i => {
-//   console.log(i)
-// });
+<% for (var i = 0; i < capacidad.length; i++) { %>
+          <tr>
+            <td><%= capacidad[i] %></td>
+          </tr>
+          <% } %>
+          
+          <% for (var i = 0; i < area.length; i++) { %>
+          <tr>
+            <td><%= area[i] %></td>
+          </tr>
+          <% } %>
+          
 
+          <% for (var i = 0; i < item.length; i++) { %>
+          <tr>
+            <td><%= item[i] %></td>
+          </tr>
+          <% } %>
 
-<% if(titulo){ %>
-<td><%= titulo %></td>
-<% } %>
-            
-// consulta.forEach((a)=> area.push(a.AreaID))
-// consulta.forEach((i)=> itemType.push(i.ItemTypeID))
-// consulta.forEach((c)=> capacidad.push(c.Capacity))
+const sqlCapacity = 'SELECT Capacity FROM items'
+        const sqlArea = 'SELECT AreaID FROM items'
+        const sqlItem = 'SELECT ItemTypeID FROM items'
+
+        // obtenemos los datos
+        const title = await conexion.query(sqlTitle);
+        const capacity = await conexion.query(sqlCapacity);
+        const areaID = await conexion.query(sqlArea);
+        const itemTypeID = await conexion.query(sqlItem);
+
+        console.log(title)
