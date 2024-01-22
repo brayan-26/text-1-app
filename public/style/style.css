@@ -331,6 +331,13 @@
   width: 1000px;
   height: 400px;
 }
+.body-inicio .container-traveler .container-search {
+  background-color: red;
+  text-align: start;
+}
+.body-inicio .container-traveler .container-search input {
+  width: 100px;
+}
 .body-inicio .container-manager {
   background-color: yellow;
   display: none;

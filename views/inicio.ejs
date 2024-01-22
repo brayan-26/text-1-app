@@ -18,19 +18,27 @@
         <button>Log out</button>
       </div>
       <div class="container-traveler" id="traveler">
-        <input type="search" />
+        <div class="container-search">
+          <input type="search" />
+        </div>
 
         <table border="1">
           <tr>
             <th>Título</th>
+            <th>Capacity</th>
+            <th>AreaID</th>
+            <th>ItemTypeID</th>
           </tr>
           <% for (var i = 0; i < Titulos.length; i++) { %>
-            <tr>
-              <td><%= Titulos[i] %></td>
-            </tr>
+          <tr>
+            <td><%= Titulos[i] %></td>
+            <td><%= Capacity[i] %></td>
+            <td><%= AreaID[i] %></td>
+            <td><%= ItemTypeID[i] %></td>
+          </tr>
           <% } %>
+          
         </table>
-        
       </div>
 
       <div class="container-manager" id="manager"></div>

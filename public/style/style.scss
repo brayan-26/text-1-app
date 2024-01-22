@@ -334,6 +334,15 @@
     border: 3px solid black ;
     width: 1000px;
     height: 400px;
+
+    .container-search{
+      background-color: red;
+      text-align: start;
+
+      input{
+        width: 100px;
+      }
+    }
   }
   .container-manager {
     background-color: yellow;

@@ -41,7 +41,11 @@ app.post("/login-user", async (req, res) => {
 
   // consulta 
   const datos = await consultTravel()
-  var titulos = datos[0];
+  const datos2 = datos[0];
+  const titulosRenderizados = [];
+  const capacityRenderizados = [];
+  const areaIDRenderizados = []
+  const ItemTypeIDRenderizados = []
 
   if (employee || user) {
     if (!employee) {
@@ -51,15 +55,23 @@ app.post("/login-user", async (req, res) => {
           mensaje = resultado.message;
 
           if (resultado.succes === true) {
-            var titulosRenderizados = [];
-            for (var i = 0; i < titulos.length; i++) {
-              var titulo = titulos[i].Title;
+            for (var i = 0; i < datos2.length; i++) {
+              var titulo = datos2[i].Title;
               titulosRenderizados.push(titulo);
             }
-
-            res.render('inicio', { Titulos: titulosRenderizados });
-
-
+            for(var i = 0; i < datos2.length; i++){
+              var capacity = datos2[i].Capacity;
+              capacityRenderizados.push(capacity)
+            }
+            for(var i = 0; i < datos2.length; i++){
+              var areaID = datos2[i].AreaID;
+              areaIDRenderizados.push(areaID)
+            }
+            for(var i = 0; i < datos2.length; i++){
+              var itemTypeID = datos2[i].ItemTypeID;
+              ItemTypeIDRenderizados.push(itemTypeID)
+            }
+            res.render('inicio', { Titulos: titulosRenderizados , Capacity: capacityRenderizados , AreaID: areaIDRenderizados, ItemTypeID: ItemTypeIDRenderizados});
 
           } else if (resultado.succes === null) {
             res.render("index", { mensaje });
